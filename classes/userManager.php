@@ -11,8 +11,7 @@ class userManager
         $stmt->execute([
             ':name' => $client->getName(),
             ':email' => $client->getEmail(),
-            ':pass' => $client->getPass(),
-
+            ':pass' => $client->getPass()
         ]);
 
     }

@@ -29,6 +29,27 @@
                       We are The Lotus Team
                     </h4>
                   </div>
+                  <?php 
+                    include_once "classes/userManager.php";
+                    include_once "classes/client.php";
+                      $addClient = new client();
+                      $setInuser = new userManager();
+                      if(isset($_POST['register'])){
+                        $name = $_POST['name'];
+                        $email = $_POST['email'];
+                        $pass = $_POST['pass'];
+                        if(empty($name)||empty($email)||empty($pass)){
+                          echo "<div class='bg-red-500 rounded-md text-center w-full mb-4'><p class='text-white'>Fill all field</p></div>";
+                      }else{
+                        $addClient->setName($name);
+                        $addClient->setEmail($email);
+                        $addClient->setPass($pass);
+                        $setInuser->addClient($addClient);
+                        echo "<div class='bg-green-500 rounded-md text-center w-full '><p class='text-black'>your account has been create succesffuly</p></div>";
+                      }
+                        
+                      }
+                    ?>
 
                   <form method="POST">
                     <p class="mb-4">Please register an account</p>
@@ -67,31 +88,17 @@
                         type="submit" name="register" data-twe-ripple-init data-twe-ripple-color="light" style="
                         background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
                       ">
-                        Sign up
+                        Register
                       </button>
                       
                     </div>
-                    <?php 
-                    include_once "classes/userManager.php";
-                    include_once "classes/client.php";
-                      $addClient = new client();
-                      $setInuser = new userManager();
-                      
-                      if(isset($_POST['register'])){
-                        $addClient->setName($_POST['name']);
-                        $addClient->setEmail($_POST['email']);
-                        $addClient->setPass($_POST['pass']);
-                        $setInuser->addClient($addClient);
-                        echo "<div class='bg-green-100 text-center w-full '><p>your account has been create succesffuly</p></div>";
-                        
-                      }
-                    ?>
+                    
 
                     <!--Register button-->
                     <div class="flex items-center justify-between pb-6">
                       <p class="mb-0 me-2">Have an account?</p>
                       <a href="login.php"><button type="button"
-                          class="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-danger-50/50 hover:text-danger-600 focus:border-danger-600 focus:bg-danger-50/50 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-rose-950 dark:focus:bg-rose-950"
+                          class="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-400  hover:text-danger-600 focus:border-danger-600 focus:bg-danger-50/50 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-rose-950 dark:focus:bg-rose-950"
                           data-twe-ripple-init data-twe-ripple-color="light">
                           Login
                         </button></a>
