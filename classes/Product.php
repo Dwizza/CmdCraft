@@ -70,9 +70,10 @@ class Product
     {
         $this->photo = $photo;
     }
-    public function __construct($name, $description, $price, $quantity)
+    public function __construct($name, $description, $price, $quantity,$photo)
     {
         $this->name = $name;
+        $this->photo = $photo;
         $this->description = $description;
         $this->price = $price;
         $this->quantity = $quantity;

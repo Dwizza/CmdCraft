@@ -11,9 +11,8 @@ class ProductManager
         $stmt->execute();
         $products = $stmt->fetchAll();
         foreach ($products as $product) {
-            $p = new Product( $product['name'], $product['description'], $product['price'], $product['quantity']);
+            $p = new Product( $product['name'], $product['description'], $product['price'], $product['quantity'],$product['photo']);
         $p->setId($product['id']);
-        $p->setPhoto($product['photo']);
         
         echo "<tr>
                     <td>".$p->getName()."</td>
@@ -22,10 +21,10 @@ class ProductManager
                     <td>".$p->getPrice()."</td>
                     <td>".$p->getQuantity()."</td>
                     <td>
-                        <a href='/products/edit.php?id=".$p->getId()."'>Edit</a>
+                        <a href='../products/edit.php?id=".$p->getId()."'>Edit</a>
                     </td>
                     <td>
-                        <a href='/products/delete.php?id=".$p->getId()."'>Delete</a>
+                        <a href='../products/delete.php?id=".$p->getId()."'>Delete</a>
                     </td>
                 </tr>";
         }
@@ -48,7 +47,7 @@ class ProductManager
             ':id' => $id
         ]);
         $product = $stmt->fetch();
-        $p = new Product( $product['name'], $product['description'], $product['price'], $product['quantity']);
+        $p = new Product( $product['name'], $product['description'], $product['price'], $product['quantity'],$product['photo']);
         $p->setId($product['id']);
     return $p;
     }
@@ -56,9 +55,10 @@ class ProductManager
     public function update(Product $product)
     {
         $conn = Database::getConnection();
-        $stmt = $conn->prepare("UPDATE products SET name = :name, description = :description, price = :price, quantity = :quantity WHERE id = :id");
+        $stmt = $conn->prepare("UPDATE products SET name = :name,photo = :photo, description = :description, price = :price, quantity = :quantity WHERE id = :id");
         $stmt->execute([
             ':name' => $product->getName(),
+            ':photo' => $product->getPhoto(),
             ':description' => $product->getDescription(),
             ':price' => $product->getPrice(),
             ':quantity' => $product->getQuantity(),

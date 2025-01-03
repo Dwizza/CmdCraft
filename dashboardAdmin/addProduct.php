@@ -13,8 +13,7 @@ if (isset($_POST['save'])) {
     if(empty($name)||empty($desc)||empty($price)||empty($quantity)){
         echo "<div class='bg-red-500 rounded-md text-center w-full mb-4'><p class='text-white'>Fill all field</p></div>";
     }else{
-        $addproduct = new product($name,$desc,$price,$quantity);
-        $addproduct->setPhoto($photo);
+        $addproduct = new product($name,$desc,$price,$quantity,$photo);
         $setProduct->addProduct($addproduct);
     echo "<div class='bg-green-500 rounded-md text-center w-full '><p class='text-black'>your product has been create</p></div>";
     }
