@@ -31,22 +31,23 @@
                   </div>
                   <?php 
                     include_once "classes/userManager.php";
+                    include_once "database.php";
                     include_once "classes/client.php";
                       $addClient = new client();
                       $setInuser = new userManager();
                       if(isset($_POST['register'])){
                         $name = $_POST['name'];
                         $email = $_POST['email'];
-                        $pass = $_POST['pass'];
+                        $pass = password_hash($_POST['pass'],PASSWORD_DEFAULT);
                         if(empty($name)||empty($email)||empty($pass)){
                           echo "<div class='bg-red-500 rounded-md text-center w-full mb-4'><p class='text-white'>Fill all field</p></div>";
-                      }else{
-                        $addClient->setName($name);
-                        $addClient->setEmail($email);
-                        $addClient->setPass($pass);
-                        $setInuser->addClient($addClient);
-                        echo "<div class='bg-green-500 rounded-md text-center w-full '><p class='text-black'>your account has been create succesffuly</p></div>";
-                      }
+                        }else{
+                          $addClient->setName($name);
+                          $addClient->setEmail($email);
+                          $addClient->setPass($pass);
+                          $setInuser->addClient($addClient);
+                          echo "<div class='bg-green-500 rounded-md text-center w-full '><p class='text-black'>your account has been create succesffuly</p></div>";
+                        }
                         
                       }
                     ?>

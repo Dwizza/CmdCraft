@@ -1,4 +1,9 @@
-<?php include_once "header.php";?>
+<?php 
+include_once "header.php";
+include_once "../classes/userManager.php";
+require_once "../database.php";
+
+?>
 
 <table class="mt-10 mx-2 min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
     <thead class="bg-gray-200">
@@ -11,10 +16,14 @@
         </tr>
     </thead>
     <tbody>
-        
+        <?php 
+        $showrow = new userManager();
+        $rows=$showrow->affichage();
+        foreach ($rows as $row) {
+        ?>
         <tr class="hover:bg-gray-100">
-        <td class="px-4 py-2 border-b">John Doe</td>
-        <td class="px-4 py-2 border-b">john@example.com</td>
+        <td class="px-4 py-2 border-b"><?= $row['name']?></td>
+        <td class="px-4 py-2 border-b"><?= $row['email']?></td>
         <td class="px-4 py-2 border-b">********</td>
         <td class="px-4 py-2 border-b">
             <span class="text-green-600 font-semibold">Active</span>
@@ -23,7 +32,9 @@
             <button class="text-lime-700">Edit</button>
         </td>
         </tr>
-        
+        <?php
+        }
+        ?>
     </tbody>
 </table>
 

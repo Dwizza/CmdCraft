@@ -10,18 +10,31 @@ class ProductManager
         $stmt = $conn->prepare("SELECT * FROM products");
         $stmt->execute();
         $products = $stmt->fetchAll();
-        $data = [];
         foreach ($products as $product) {
-            $data[] = new Product($product['id'], $product['name'], $product['description'], $product['price'], $product['quantity']);
+            $p = new Product( $product['name'], $product['description'], $product['price'], $product['quantity']);
+        $p->setId($product['id']);
+        $p->setPhoto($product['photo']);
+        
+        echo "<tr>
+                    <td>".$p->getName()."</td>
+                    <td>".$p->getPhoto()."</td>
+                    <td>".$p->getDescription()."</td>
+                    <td>".$p->getPrice()."</td>
+                    <td>".$p->getQuantity()."</td>
+                    <td>
+                        <a href='/products/edit.php?id=".$p->getId()."'>Edit</a>
+                    </td>
+                    <td>
+                        <a href='/products/delete.php?id=".$p->getId()."'>Delete</a>
+                    </td>
+                </tr>";
         }
-        return $data;// [ Product, Product, Product]
     }
 
     public function delete($id)
     {
         $conn = Database::getConnection();
         $stmt = $conn->prepare("DELETE FROM products WHERE id = :id");
-        // $stmt->bindParam(':id', $id);
         $stmt->execute([
             ':id' => $id
         ]);
@@ -35,7 +48,9 @@ class ProductManager
             ':id' => $id
         ]);
         $product = $stmt->fetch();
-        return new Product($product['id'], $product['name'], $product['description'], $product['price'], $product['quantity']);
+        $p = new Product( $product['name'], $product['description'], $product['price'], $product['quantity']);
+        $p->setId($product['id']);
+    return $p;
     }
 
     public function update(Product $product)
@@ -53,9 +68,10 @@ class ProductManager
     public function addProduct(Product $product)
     {
         $conn = Database::getConnection();
-        $stmt = $conn->prepare("INSERT INTO products(name,description,price,quantity) VALUES (:name, :description, :price, :quantity)");
+        $stmt = $conn->prepare("INSERT INTO products(name,description,price,quantity,photo) VALUES (:name, :description, :price, :quantity,:photo)");
         $stmt->execute([
             ':name' => $product->getName(),
+            ':photo' => $product->getPhoto(),
             ':description' => $product->getDescription(),
             ':price' => $product->getPrice(),
             ':quantity' => $product->getQuantity()

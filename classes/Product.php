@@ -7,6 +7,7 @@ class Product
     private $description;
     private $price;
     private $quantity;
+    private $photo;
 
     public function getId()
     {
@@ -32,6 +33,15 @@ class Product
     {
         return $this->quantity;
     }
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     public function setName($name)
     {
@@ -56,32 +66,15 @@ class Product
     {
         $this->quantity = $quantity;
     }
-    public function __construct($id, $name, $description, $price, $quantity)
+    public function setPhoto($photo)
     {
-        echo "Product object is created\n";
-        $this->id = $id;
+        $this->photo = $photo;
+    }
+    public function __construct($name, $description, $price, $quantity)
+    {
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
         $this->quantity = $quantity;
-    }
-
-    public function __destruct()
-    {
-        echo "Product object is destroyed\n";
-    }
-
-    public function rendreRow()
-    {
-        return "<tr>
-                    <td>$this->name</td>
-                    <td>$this->description</td>
-                    <td>$this->price</td>
-                    <td>$this->quantity</td>
-                    <td>
-                        <a href='/products/edit.php?id=$this->id'>Edit</a>
-                        <a href='/products/delete.php?id=$this->id'>Delete</a>
-                    </td>
-                </tr>";
     }
 }

@@ -1,5 +1,5 @@
 <?php
-require_once "./database.php";
+require_once "../database.php";
 
 class userManager
 {
@@ -14,6 +14,14 @@ class userManager
             ':pass' => $client->getPass()
         ]);
 
+    }
+    public function affichage(){
+
+        $conn = Database::getConnection();
+        $stmt = $conn->prepare("SELECT * FROM users WHERE role = 'client' ");
+        $stmt->execute();
+        $affiche= $stmt->fetchAll();
+        return $affiche;
     }
 
 }
