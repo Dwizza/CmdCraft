@@ -20,7 +20,7 @@ if (isset($_POST['save'])) {
 }
 ?>
 
-<div class='bg-red-200 w-[500px] rounded-md p-10 mt-10 m-auto'>
+<div class=' w-[500px] rounded-md p-10 mt-10 m-auto' style="background: linear-gradient(80deg,rgb(209, 18, 18),rgb(171, 2, 5),rgb(117, 35, 35))">
     <p class="text-center text-lg">Add Product</p>
     <form class="flex flex-col items-center gap-5 mt-5" action="" method="POST">
         <label for="name">Name<br>
@@ -38,7 +38,7 @@ if (isset($_POST['save'])) {
         <label for="quantity">Quantity<br>
             <input class="w-[400px] px-2 h-8 bg-gray-100 rounded-md border-b-2 outline-none focus:border-pink-500" min="0" type="number" name="quantity" id="quantity">
         </label>
-        <button class="px-4 py-2 w-20 text-white rounded-lg bg-pink-700 hover:bg-pink-900" name="save">Save</button>
+        <button class="px-4 py-2 w-20 text-white rounded-lg bg-red-500 hover:bg-red-900" name="save">Save</button>
     </form>
 </div>
 <?php include_once "footer.php";?>

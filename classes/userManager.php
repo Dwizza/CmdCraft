@@ -33,6 +33,7 @@ class userManager
 
 
             $_SESSION["userid"]=$myuser["id"];
+            $_SESSION["userName"]=$myuser["name"];
             $_SESSION["email"]=$myuser["email"];
             $_SESSION["role"]=$myuser["role"];
             

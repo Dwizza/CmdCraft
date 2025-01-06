@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <section class="gradient-form h-full bg-white ">
+  <section class="gradient-form h-full bg-neutral-700 ">
     <div class="container h-full p-10">
       <div class="flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
         <div class="w-full">

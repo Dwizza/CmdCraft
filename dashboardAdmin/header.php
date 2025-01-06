@@ -1,3 +1,11 @@
+<?php
+session_start();
+if($_SESSION["email"]==''&&$_SESSION["role"]!='client'){
+  header('location: ../clientView/login.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
