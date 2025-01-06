@@ -4,7 +4,7 @@ CREATE TABLE users(
     email VARCHAR(255) NOT NULL UNIQUE,
     pass VARCHAR(255) NOT NULL,
     role ENUM('admin', 'client') DEFAULT 'client',
-    is_active BOOLEAN DEFAULT 1
+    is_active ENUM('active', 'desactive') DEFAULT 'active'
 );
 
 CREATE TABLE orders(

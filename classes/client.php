@@ -5,6 +5,7 @@ class client
     private $name;
     private $email;
     private $pass;
+    private $is_active;
 
     public function getId()
     {
@@ -25,6 +26,10 @@ class client
     {
         return $this->pass;
     }
+    public function getIs_active()
+    {
+        return $this->is_active;
+    }
 
     public function setName($name)
     {
@@ -43,6 +48,10 @@ class client
     public function setPass($pass)
     {
         $this->pass = $pass;
+    }
+    public function setIs_active($is_active)
+    {
+        $this->is_active = $is_active;
     }
 
     // public function __construct($id, $name, $email, $pass)

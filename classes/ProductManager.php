@@ -21,10 +21,10 @@ class ProductManager
                     <td>".$p->getPrice()."</td>
                     <td>".$p->getQuantity()."</td>
                     <td>
-                        <a href='../products/edit.php?id=".$p->getId()."'>Edit</a>
+                        <a class='text-lime-600' href='../products/edit.php?id=".$p->getId()."'>Edit</a>
                     </td>
                     <td>
-                        <a href='../products/delete.php?id=".$p->getId()."'>Delete</a>
+                        <a class='text-red-600' href='../products/delete.php?id=".$p->getId()."'>Delete</a>
                     </td>
                 </tr>";
         }

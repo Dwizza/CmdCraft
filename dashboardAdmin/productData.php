@@ -4,7 +4,7 @@ include_once "../classes/ProductManager.php";
 include_once "../classes/Product.php";
 ?>
 
-<table class="mt-10 mx-2 min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+<table class="mt-10 w-full bg-white border border-gray-200 rounded-lg shadow-md">
     <thead class="bg-gray-200">
         <tr>
         <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 border-b">Name</th>
@@ -19,7 +19,7 @@ include_once "../classes/Product.php";
     <tbody>
         <?php
         $affiche = new productManager();
-        print_r($affiche->displayAll());
+        $affiche->displayAll();
         ?>
 
         

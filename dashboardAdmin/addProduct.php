@@ -21,6 +21,7 @@ if (isset($_POST['save'])) {
 ?>
 
 <div class='bg-red-200 w-[500px] rounded-md p-10 mt-10 m-auto'>
+    <p class="text-center text-lg">Add Product</p>
     <form class="flex flex-col items-center gap-5 mt-5" action="" method="POST">
         <label for="name">Name<br>
         <input class="w-[400px] px-2 h-8 bg-gray-100 rounded-md border-b-2 outline-none focus:border-pink-500" type="text" name="name" id="name">

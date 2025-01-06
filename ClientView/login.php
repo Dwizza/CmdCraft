@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <section class="gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
+  <section class="gradient-form h-full bg-white ">
     <div class="container h-full p-10">
       <div class="flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
         <div class="w-full">
@@ -24,10 +24,29 @@
                       src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                       alt="logo" />
                     <h4 class="mb-12 mt-1 pb-1 text-xl font-semibold">
-                      We are The Lotus Team
+                      We are The Dwiza Team
                     </h4>
                   </div>
+                  <?php
 
+                      session_start();
+
+                      include '../database.php';
+                      include "../classes/userManager.php";
+
+                      $newObjLogin = new userManager();
+
+                      if (isset($_POST['login'])) {
+                        
+                          $email=$_POST["email"];
+                          $password=$_POST["pass"];
+
+                      $newObjLogin->loginFunc($email,$password);
+
+                      }
+
+
+                  ?>
                   <form method="POST">
                     <p class="mb-4">Please login to your account</p>
                     <!--Username input-->

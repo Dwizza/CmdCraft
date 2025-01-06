@@ -30,9 +30,9 @@
                     </h4>
                   </div>
                   <?php 
-                    include_once "classes/userManager.php";
-                    include_once "database.php";
-                    include_once "classes/client.php";
+                    include_once "../classes/userManager.php";
+                    include_once "../database.php";
+                    include_once "../classes/client.php";
                       $addClient = new client();
                       $setInuser = new userManager();
                       if(isset($_POST['register'])){
