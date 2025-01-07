@@ -120,6 +120,7 @@ if($_SESSION["email"]==''){
     </nav>
     <div class="flex flex-col items-center gap-5 ">
         <h2>Your basket</h2>
+        
         <div class="flex justify-between w-1/2 m-auto bg-gray-100 items-center">
             <div class="flex items-center gap-5">
                 <img class="w-20" src="https://www.mymarket.ma/cdn/shop/products/assil-vanile.png?v=1672927806" alt="">
@@ -141,6 +142,7 @@ if($_SESSION["email"]==''){
                 </div>
             </form>
         </div>
+
         <div>
             <a href=""><button class="px-20 py-4 rounded-md bg-gray-400 hover:bg-gray-200">Checkout</button></a>
         </div>
@@ -149,15 +151,15 @@ if($_SESSION["email"]==''){
 </html>
 <script>
     const quantity =document.getElementById('quantity');
-    let count = 0;
+    let count = 1;
     function incrementButton(){
         count++;
-        quantity.innerText=count;
+        quantity.innerText = count;
     }
     function decrementButton(){
         if(count>0){
             count--;
-            quantity.innerText=count;
+            quantity.innerText = count;
         }
     }
 </script>
